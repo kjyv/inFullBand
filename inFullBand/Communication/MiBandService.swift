@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreBluetooth
+import UIKit
 
 class MiBandService: NSObject {
 
@@ -15,6 +16,8 @@ class MiBandService: NSObject {
 
     // MARK: - Properties
 
+    var parentViewController: UIViewController!
+    
     private let updatableIDs: [MiCharacteristicID] = [.dateTime, .activity, .battery]
     private let monitoredIDs: [MiCharacteristicID] = [.heartRateMeasurement, .activity]
 
@@ -36,11 +39,20 @@ class MiBandService: NSObject {
     private var hrControlPointCharacteristic: CBCharacteristic?
     private var alertCharacteristic: CBCharacteristic?
 
+    var healthKitHandler: HealthKitHandler!
+    var updateHRtimer: DispatchSourceTimer!
+
     // MARK: - Init
 
-    init(log: @escaping LoggerFuction, specialLog: @escaping LoggerFuction) {
+    init(log: @escaping LoggerFuction, specialLog: @escaping LoggerFuction, parentViewController: UIViewController) {
+        self.parentViewController = parentViewController
         self.externalLog = log
         self.externalSpecialLog = specialLog
+        self.healthKitHandler = HealthKitHandler() {success , error in
+            if !success {
+                parentViewController.showAlert(title: "Error", message: error.debugDescription) {_ in }
+            }
+        }
         super.init()
         _ = manager
     }
@@ -79,8 +91,17 @@ class MiBandService: NSObject {
             errorLog("Start: Invalid setup!")
             return
         }
-        miBand.writeValue(Data(bytes: MiCommand.startHeartRateMonitoring), for: hrControlPoint, type: .withResponse)
-        log("❤️", "Start monitoring")
+        self.updateHRtimer = DispatchSource.makeTimerSource()
+        self.updateHRtimer.schedule(deadline: .now(), repeating: .seconds(60*5))
+        self.updateHRtimer.setEventHandler {
+            DispatchQueue.main.async {
+                miBand.writeValue(Data(bytes: MiCommand.stopHeartRateMonitoring), for: hrControlPoint, type: .withResponse)
+                miBand.writeValue(Data(bytes: MiCommand.startHeartRateMonitoring), for: hrControlPoint, type: .withResponse)
+                self.log("❤️", "Start monitoring HR (writing to Apple Health)")
+            }
+
+        }
+        self.updateHRtimer.resume()
     }
 
     func stopMonitorigHeartRate() {
@@ -88,6 +109,8 @@ class MiBandService: NSObject {
             errorLog("Stop: Invalid setup!")
             return
         }
+        self.updateHRtimer.suspend()
+
         miBand.writeValue(Data(bytes: MiCommand.stopHeartRateMonitoring), for: hrControlPoint, type: .withResponse)
         miBand.writeValue(Data(bytes: MiCommand.stopHeartRateMeasurement), for: hrControlPoint, type: .withResponse)
         log("❤️", "Stop monitoring / measurement")
@@ -141,6 +164,14 @@ class MiBandService: NSObject {
         case .heartRateMeasurement:
             let heartRate = valueBytes[1]
             log("❤️", "Heart rate:", "\(heartRate) BPM")
+            
+            if heartRate > 0 {
+                healthKitHandler.saveHeartRate(heartRate: Double(heartRate)) {success, error in
+                    if !success {
+                        self.parentViewController.showAlert(title: "Error", message: "Error writing to HealthKit: \(error)", completion: {_ in })
+                    }
+                }
+            }
 
         case .activity:
             guard let stepsCount = UInt32.from(bytes: Array(valueBytes[1...4])),
@@ -170,10 +201,12 @@ extension MiBandService: CBCentralManagerDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print(peripheral)
-        specialLog("🌎", "Discovered:", "\(peripheral.realName)")
+        if !peripheral.realName.starts(with: "Unnamed") {
+            print(peripheral)
+            specialLog("🌎", "Discovered:", "\(peripheral.realName)")
 
-        discoveredPeripherals.append(peripheral)
+            discoveredPeripherals.append(peripheral)
+        }
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {

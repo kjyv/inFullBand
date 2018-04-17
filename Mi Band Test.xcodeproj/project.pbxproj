@@ -22,10 +22,13 @@
 		D0FEE6C11FCD9F1B0015EFEA /* CoreBluetooth+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEE6C01FCD9F1B0015EFEA /* CoreBluetooth+Extensions.swift */; };
 		D0FEE6C31FCD9F490015EFEA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEE6C21FCD9F490015EFEA /* Array+Extensions.swift */; };
 		D0FEE6C51FCDA00C0015EFEA /* MiBandConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FEE6C41FCDA00C0015EFEA /* MiBandConstants.swift */; };
+		F88637412086987D00B392AA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88637402086987D00B392AA /* HealthKit.framework */; };
+		F88637442086995100B392AA /* HealthKitHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88637432086995100B392AA /* HealthKitHandler.swift */; };
+		F886374620869C4200B392AA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F886374520869C4200B392AA /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D08AF1F01FC433720009A7AF /* inFullBand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inFullBand.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08AF1F01FC433720009A7AF /* Mi Band Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mi Band Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08AF1F31FC433720009A7AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D08AF1F51FC433720009A7AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D08AF1F81FC433720009A7AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,6 +46,10 @@
 		D0FEE6C01FCD9F1B0015EFEA /* CoreBluetooth+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreBluetooth+Extensions.swift"; sourceTree = "<group>"; };
 		D0FEE6C21FCD9F490015EFEA /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		D0FEE6C41FCDA00C0015EFEA /* MiBandConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiBandConstants.swift; sourceTree = "<group>"; };
+		F88637402086987D00B392AA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		F88637422086987D00B392AA /* Mi Band Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Mi Band Test.entitlements"; sourceTree = "<group>"; };
+		F88637432086995100B392AA /* HealthKitHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitHandler.swift; sourceTree = "<group>"; };
+		F886374520869C4200B392AA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88637412086987D00B392AA /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +67,7 @@
 		D08AF1E71FC433720009A7AF = {
 			isa = PBXGroup;
 			children = (
+				F88637422086987D00B392AA /* Mi Band Test.entitlements */,
 				D08AF1F21FC433720009A7AF /* inFullBand */,
 				D08AF1F11FC433720009A7AF /* Products */,
 				D08AF2051FC435430009A7AF /* Frameworks */,
@@ -68,7 +77,7 @@
 		D08AF1F11FC433720009A7AF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D08AF1F01FC433720009A7AF /* inFullBand.app */,
+				D08AF1F01FC433720009A7AF /* Mi Band Test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +91,7 @@
 				D0F5BA101FD9794B005E778D /* Resources */,
 				D08AF1F31FC433720009A7AF /* AppDelegate.swift */,
 				D0E177112003A53B008F4187 /* LogEntry.swift */,
+				F88637432086995100B392AA /* HealthKitHandler.swift */,
 			);
 			path = inFullBand;
 			sourceTree = "<group>";
@@ -89,6 +99,7 @@
 		D08AF2051FC435430009A7AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F88637402086987D00B392AA /* HealthKit.framework */,
 				D08AF2061FC435430009A7AF /* CoreBluetooth.framework */,
 			);
 			name = Frameworks;
@@ -102,6 +113,7 @@
 				D0FEE6BE1FCD9EFC0015EFEA /* Data+Extensions.swift */,
 				D0F5BA161FD97B32005E778D /* DateComponents+Extensions.swift */,
 				D0F5BA141FD97B24005E778D /* Int+Extensions.swift */,
+				F886374520869C4200B392AA /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -139,9 +151,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D08AF1EF1FC433720009A7AF /* inFullBand */ = {
+		D08AF1EF1FC433720009A7AF /* Mi Band Test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D08AF2021FC433720009A7AF /* Build configuration list for PBXNativeTarget "inFullBand" */;
+			buildConfigurationList = D08AF2021FC433720009A7AF /* Build configuration list for PBXNativeTarget "Mi Band Test" */;
 			buildPhases = (
 				D08AF1EC1FC433720009A7AF /* Sources */,
 				D08AF1ED1FC433720009A7AF /* Frameworks */,
@@ -151,9 +163,9 @@
 			);
 			dependencies = (
 			);
-			name = inFullBand;
+			name = "Mi Band Test";
 			productName = MiBand;
-			productReference = D08AF1F01FC433720009A7AF /* inFullBand.app */;
+			productReference = D08AF1F01FC433720009A7AF /* Mi Band Test.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -163,16 +175,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Mikołaj Chmielewski";
 				TargetAttributes = {
 					D08AF1EF1FC433720009A7AF = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = D08AF1EB1FC433720009A7AF /* Build configuration list for PBXProject "inFullBand" */;
+			buildConfigurationList = D08AF1EB1FC433720009A7AF /* Build configuration list for PBXProject "Mi Band Test" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -185,7 +202,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D08AF1EF1FC433720009A7AF /* inFullBand */,
+				D08AF1EF1FC433720009A7AF /* Mi Band Test */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08AF1F61FC433720009A7AF /* ViewController.swift in Sources */,
+				F88637442086995100B392AA /* HealthKitHandler.swift in Sources */,
 				D0FEE6C51FCDA00C0015EFEA /* MiBandConstants.swift in Sources */,
 				D0FEE6C31FCD9F490015EFEA /* Array+Extensions.swift in Sources */,
 				D0FEE6BF1FCD9EFC0015EFEA /* Data+Extensions.swift in Sources */,
@@ -217,6 +235,7 @@
 				D0F5BA171FD97B32005E778D /* DateComponents+Extensions.swift in Sources */,
 				D0FEE6BD1FCD9D4C0015EFEA /* MiBandService.swift in Sources */,
 				D0F5BA151FD97B24005E778D /* Int+Extensions.swift in Sources */,
+				F886374620869C4200B392AA /* UIViewController+Extensions.swift in Sources */,
 				D08AF1F41FC433720009A7AF /* AppDelegate.swift in Sources */,
 				D0FEE6C11FCD9F1B0015EFEA /* CoreBluetooth+Extensions.swift in Sources */,
 				D08BC6B620038A41007B5137 /* ActionButton.swift in Sources */,
@@ -259,6 +278,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -266,6 +286,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -316,6 +337,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -323,6 +345,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -357,12 +380,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Mi Band Test.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V5T4VNV573;
+				DEVELOPMENT_TEAM = F229TX233T;
 				INFOPLIST_FILE = "$(SRCROOT)/inFullBand/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.infullmobile.infullband;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sb.infullband;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -375,12 +399,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Mi Band Test.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V5T4VNV573;
+				DEVELOPMENT_TEAM = F229TX233T;
 				INFOPLIST_FILE = "$(SRCROOT)/inFullBand/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.infullmobile.infullband;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sb.infullband;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -391,7 +416,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D08AF1EB1FC433720009A7AF /* Build configuration list for PBXProject "inFullBand" */ = {
+		D08AF1EB1FC433720009A7AF /* Build configuration list for PBXProject "Mi Band Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D08AF2001FC433720009A7AF /* Debug */,
@@ -400,7 +425,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D08AF2021FC433720009A7AF /* Build configuration list for PBXNativeTarget "inFullBand" */ = {
+		D08AF2021FC433720009A7AF /* Build configuration list for PBXNativeTarget "Mi Band Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D08AF2031FC433720009A7AF /* Debug */,

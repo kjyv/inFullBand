@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var selectableRowsIndexes: [Int] = []
 
     lazy var miBandService = MiBandService(log: { [weak self] logEntry in self?.log(logEntry) },
-                                           specialLog: { [weak self] logEntry in self?.specialLog(logEntry) })
+                                           specialLog: { [weak self] logEntry in self?.specialLog(logEntry) },  parentViewController: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         selectableRowsIndexes.append(self.logHistory.count)
         log(string)
     }
-
+    
     @IBAction func discoverButtonWasPressed() {
         miBandService.discoverPeripherals()
     }

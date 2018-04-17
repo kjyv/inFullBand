@@ -29,7 +29,7 @@ struct HeartRateReadingMode {
     static let sleep: UInt8 = 0x0
     static let continuous: UInt8 = 0x1
     static let manual: UInt8 = 0x2
-
+    
     private init() {}
 }
 
